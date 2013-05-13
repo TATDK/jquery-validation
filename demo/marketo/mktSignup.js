@@ -4,9 +4,9 @@ $(document).ready(function(){
 		response: function(settings) {
 			var email = settings.data.email,
 				emails = ["glen@marketo.com", "george@bush.gov", "me@god.com", "aboutface@cooper.com", "steam@valve.com", "bill@gates.com"];
-			this.responseText = "true";
+			this.responseText = JSON.stringify({valid:true});
 			if ( $.inArray( email, emails ) !== -1 ) {
-				this.responseText = "false";
+				this.responseText = JSON.stringify({valid:false});
 			}
 		},
 		responseTime: 500

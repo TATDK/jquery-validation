@@ -1150,7 +1150,7 @@ $.extend($.validator, {
 				data: data,
 				success: function( response ) {
 					validator.settings.messages[element.name].remote = previous.originalMessage;
-					var valid = response === true || response === "true";
+					var valid = typeof response.valid !== 'undefined' && response.valid === true;
 					if ( valid ) {
 						var submitted = validator.formSubmitted;
 						validator.prepareElement(element);
@@ -1160,7 +1160,7 @@ $.extend($.validator, {
 						validator.showErrors();
 					} else {
 						var errors = {};
-						var message = response || validator.defaultMessage( element, "remote" );
+						var message = response.message || validator.defaultMessage( element, "remote" );
 						errors[element.name] = previous.message = $.isFunction(message) ? message(value) : message;
 						validator.invalid[element.name] = true;
 						validator.showErrors(errors);

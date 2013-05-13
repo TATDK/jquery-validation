@@ -13,14 +13,14 @@ $.mockjax({
 $.mockjax({
 	url: "users.php",
 	data: { username: /Peter2?|asdf/},
-	responseText: 'false',
+	responseText: '{"valid":false}',
 	responseStatus: 200,
 	responseTime: 1
 });
 $.mockjax({
 	url: "users2.php",
 	data: { username: "asdf"},
-	responseText: '"asdf is already taken, please try something else"',
+	responseText: '{"valid":false,"message":"asdf is already taken, please try something else"}',
 	responseStatus: 200,
 	responseTime: 1
 });
